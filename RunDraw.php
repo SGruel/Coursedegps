@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <form  method="post"  id='test'> 
+    <form method="post" id="test"> 
       <fieldset>
        <legend>Input zone</legend>
 
