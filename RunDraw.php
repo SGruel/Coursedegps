@@ -14,18 +14,18 @@
       </div>
     </div>
 
-    <form  method="get"  id="selectionform"> 
+    <form  method="post"  id='test'> 
       <fieldset>
        <legend>Input zone</legend>
 
         <label>Sélectionnez votre course !
          <select id="select" name="course">
-           <option value="course1">course1</option>
-           <option value="course2">course2</option>
+           <option value="../json/simple-activity_1995509180.json">course1</option>
+           <option value="../json/simple-activity_2092979987.json">course2</option>
          </select>
         </label>
 
-       <input type="submit" name="Valider" value="Valider" id=valid>
+       <button id="valid" >Valider</button>
      </fieldset> 
     </form>
     <div id='speeddiv'>

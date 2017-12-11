@@ -1,6 +1,6 @@
 
 
-// variable globale
+ var selectionform= document.getElementById('test');
 
 //initialisation de la page
 window.onload =init;
@@ -9,10 +9,10 @@ function init(){
 
    // initialisation des variables
 
-
+   var valid=document.getElementById('valid');
    var map = L.map('map').setView([51.505, -0.09], 13);
    var formspeed = document.getElementById('formspeed');
-   var selectionform = document.getElementById('selectionform');
+   var selectionform= document.getElementById('test');
 
 
    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
