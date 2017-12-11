@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <form  method="get" id="selectionform"> 
+    <form  method="get"  id="selectionform"> 
       <fieldset>
        <legend>Input zone</legend>
 
