@@ -30,7 +30,8 @@
       </fieldset>
      </form>
    </div>
-
+   <h1 id='Titlerun'></h1>
+   <p id='coord'></p>
 
     <div id='speeddiv'>
       <form  method="get" id="formspeed">

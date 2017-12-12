@@ -1,14 +1,13 @@
 //initialisation de la page
 window.onload = init;
 
-var selectionform = document.getElementById("test");
-var formspeed = document.getElementById("speeddiv");
+
 
 function init(){
 
    // initialisation des variables
    selectionform = document.getElementById("test");
-	formspeed = document.getElementById("speeddiv");
+	 formspeed = document.getElementById("speeddiv");
 
    var valid=document.getElementById('valid');
    var map = L.map('map').setView([51.505, -0.09], 13);
@@ -43,44 +42,55 @@ function init(){
        formspeed.style.visibility = 'visible';
        // récupération du json
        var file = JSON.parse(ajax.responseText);
-       // centrage de la map sur le premier point de la course
+
+
+       // centrage de la map sur le premier point de la course + marqueur
+       var marker = new L.marker([file.points[0].lat,file.points[0].lng])
+       map.addLayer(marker)
        map.setView([file.points[0].lat,file.points[0].lng],13)
+       var coord = document.getElementById('coord')
+       coord.innerHTML = "Latitude :  "+file.points[0].lat+"   Longitude :   "+file.points[1].lat
+
+
        //creation de la polyligne
        var polylignePoints = new Array();
-       //boucle sur les points du json
-       for(var point in file.points){
-         polylignePoints.push( new L.LatLng(file.points[point].lat,file.points[point].lng))
+       var dateini = Date.parse(file.points[0].time)
 
+       //boucle sur les points du json +modifications des temps
+       for(var point in file.points){
+         polylignePoints.push( new L.LatLng(file.points[point].lat,file.points[point].lng));
+         file.points[point].time= dateini-Date.parse(file.points[point].time)
        };
        var polyligneOptions= {
          color : 'red',
-         weight : 4 ,
+         weight : 2 ,
          opacity : 0.9 ,
 
        };
        var polyligne = new L.Polyline(polylignePoints,polyligneOptions);
+       //ajout de la polyligne à la carte et centrage sur celle ci
        map.addLayer(polyligne);
        map.fitBounds(polyligne.getBounds());
-
+       // ajout du titre
+       var titre =document.getElementById('Titlerun')
+       titre.innerHTML= file.name
      }
 
 
    }
+
+
 
    function recupfile(ajax) {
      ajax.open("GET",select.value);
      ajax.send();
    }
 
+   // gestion  pour  vitesse
+   
 
 
 
 
 
-
-}
-
-function traceGPS(event){
-	event.preventDefault();
- formspeed.style.visibility='visible';
 }
