@@ -1,7 +1,3 @@
-
-
-
-
 //initialisation de la page
 window.onload = init;
 
