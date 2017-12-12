@@ -22,16 +22,27 @@ function init(){
    formspeed.style.visibility='hidden';
    selectionform.addEventListener('submit',traceGPS);
    function traceGPS(){
-     var ajax_gps = new XMLHttpRequest();
+     var select = document.getElementById('select')
 
-     var url;
-     
-     formspeed.style.visibility='visible';
+     var ajax_gps = new XMLHttpRequest();
+     ajax_gps.addEventListener('readystatechange',fonction(){
+       traceAjax(ajax_gps)
+     });
+
+     recupfile(ajax_gps);
+
+
    };
 
 
+   function recupfile(ajax) {
+     ajax.open("GET",select.value);
+     ajax.send();
+   }
 
-   function tracepolyligne(listeCoord,map){
+
+
+   function tracepolyligne(listeCoord){
 
    }
 
