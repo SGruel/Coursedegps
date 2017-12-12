@@ -21,9 +21,11 @@ function init(){
    formspeed.style.visibility='hidden';
    selectionform.addEventListener('submit',traceGPS);
    function traceGPS(e){
+     // on empeche le rechargement de la page
      e.preventDefault();
+     // on récupère le fichier choisi
      var select = document.getElementById('select');
-
+     // séquence ajax pour obtenir le json et tracer sur la carte
      var ajax_gps = new XMLHttpRequest();
      ajax_gps.addEventListener('readystatechange',function(){
        traceAjax(ajax_gps);
@@ -37,9 +39,29 @@ function init(){
 
    function traceAjax(ajax) {
      if (ajax.readyState ==4 && ajax.status  ==200){
+       // affichage du formulaire des vitesses
        formspeed.style.visibility = 'visible';
-       var file = JSON.parse(ajax.responseText)
-       alert(file.points)
+       // récupération du json
+       var file = JSON.parse(ajax.responseText);
+       // centrage de la map sur le premier point de la course
+       map.setView([file.points[0].lat,file.points[0].lng],13)
+       //creation de la polyligne
+       var polylignePoints = new Array();
+       //boucle sur les points du json
+       for(var point in file.points){
+         polylignePoints.push( new L.LatLng(file.points[point].lat,file.points[point].lng))
+
+       };
+       var polyligneOptions= {
+         color : 'red',
+         weight : 4 ,
+         opacity : 0.9 ,
+
+       };
+       var polyligne = new L.Polyline(polylignePoints,polyligneOptions);
+       map.addLayer(polyligne);
+       map.fitBounds(polyligne.getBounds());
+
      }
 
 
@@ -52,9 +74,7 @@ function init(){
 
 
 
-   function tracepolyligne(listeCoord){
 
-   }
 
 
 
