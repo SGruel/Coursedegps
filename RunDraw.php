@@ -14,7 +14,7 @@
       </div>
     </div>
 
-    <form method="post" id="test"> 
+    <form  method="post" id="test"> 
       <fieldset>
        <legend>Input zone</legend>
 
@@ -25,7 +25,7 @@
          </select>
         </label>
 
-       <button id="valid" >Valider</button>
+       <input id="valid" type='submit' value=Valider>
      </fieldset> 
     </form>
     <div id='speeddiv'>

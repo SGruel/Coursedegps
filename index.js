@@ -1,6 +1,6 @@
 
 
- var selectionform= document.getElementById('test');
+
 
 //initialisation de la page
 window.onload = init;
@@ -22,12 +22,18 @@ function init(){
    formspeed.style.visibility='hidden';
    selectionform.addEventListener('submit',traceGPS);
    function traceGPS(){
+     var ajax_gps = new XMLHttpRequest();
+
+     var url;
+     
      formspeed.style.visibility='visible';
    };
 
 
 
+   function tracepolyligne(listeCoord,map){
 
+   }
 
 
 
